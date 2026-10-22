@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CineBook — Movie Tickets</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="#">🎬 Cine<span>Book</span></a><nav><a href="#movies">Movies</a><a href="#booking">Book tickets</a><a href="#history">My bookings</a><a href="#admin" id="adminNav" hidden>Admin</a></nav><div id="accountBar" class="account"><button class="button secondary" id="openAuth">Sign in / Register</button></div></header>
+<main>
+<section class="hero"><p class="eyebrow">YOUR NEXT MOVIE NIGHT</p><h1>Big screen.<br><span>Great memories.</span></h1><p>Discover movies, pick your seats, and make it a cinema night.</p><a class="button" href="#movies">Explore movies ↓</a></section>
+<section id="auth" class="section auth-section"><div class="section-head"><div><p class="eyebrow">YOUR CINEBOOK ACCOUNT</p><h2 id="authTitle">Sign in or create an account</h2></div></div><div class="auth-grid">
+<form id="loginForm" class="panel"><h3>Sign in</h3><label>Email<input id="loginEmail" type="email" required autocomplete="email"></label><label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label><button class="button">Sign in</button><p id="loginMessage" class="message" role="status"></p></form>
+<form id="registerForm" class="panel"><h3>Create account</h3><label>Your name<input id="registerName" required maxlength="80" autocomplete="name"></label><label>Email<input id="registerEmail" type="email" required autocomplete="email"></label><label>Password (8+ characters)<input id="registerPassword" type="password" minlength="8" required autocomplete="new-password"></label><button class="button">Register</button><p id="registerMessage" class="message" role="status"></p></form>
+</div></section>
+<section id="movies" class="section"><div class="section-head"><div><p class="eyebrow">NOW SHOWING</p><h2>Find your movie</h2></div><input id="search" placeholder="Search movie titles…" aria-label="Search movies"></div><div id="movieGrid" class="movie-grid"></div></section>
+<section id="booking" class="section booking-layout"><div><p class="eyebrow">RESERVE YOUR SEAT</p><h2>Book tickets</h2><p class="muted">Sign in to reserve a seat. Active bookings cannot share the same seat for a show.</p><form id="bookingForm" class="panel"><label>Movie<select id="movieSelect" required></select></label>
+<label>Theatre<select id="theatreSelect" required>
+<option value="PVR Lulu, Kochi">PVR Lulu · Kochi</option>
+<option value="Cinepolis Centre Square, Kochi">Cinepolis Centre Square · Kochi</option>
+<option value="Vanitha Vineetha, Edappally">Vanitha Vineetha · Edappally</option>
+<option value="New Theatre, Thiruvananthapuram">New Theatre · Thiruvananthapuram</option>
+<option value="Ariesplex SL Cinemas, Thiruvananthapuram">Ariesplex SL Cinemas · Thiruvananthapuram</option>
+<option value="Aashirvad Cinemas, Kottayam">Aashirvad Cinemas · Kottayam</option>
+<option value="Anaswara Theatre, Kottayam">Anaswara Theatre · Kottayam</option>
+<option value="Abhilash Theatre, Changanassery">Abhilash Theatre · Changanassery</option>
+<option value="Dhanya Remya, Thrissur">Dhanya Remya · Thrissur</option>
+<option value="Ragam Theatre, Thrissur">Ragam Theatre · Thrissur</option>
+<option value="Crown Theatre, Kozhikode">Crown Theatre · Kozhikode</option>
+<option value="Apsara Theatre, Kozhikode">Apsara Theatre · Kozhikode</option>
+<option value="Pranav Theatre, Kollam">Pranav Theatre · Kollam</option>
+<option value="Kairali Sree Theatre, Alappuzha">Kairali Sree Theatre · Alappuzha</option>
+</select></label>
+<label>Show time<select id="showTime"><option>Today 6:00 PM</option><option>Today 9:00 PM</option><option>Tomorrow 3:00 PM</option></select></label><div class="screen">SCREEN</div><div id="seats" class="seats"></div><p class="muted small">Green = available · Red = booked · Gold = selected</p><button class="button" type="submit">Confirm booking</button><p id="bookingMessage" class="message" role="status"></p></form></div><aside class="summary panel"><h3>How it works</h3><p>1. Create an account or sign in.</p><p>2. Choose a movie and show.</p><p>3. Select an available seat.</p><p>4. Confirm your booking.</p><p class="muted small">Demo only: no real payment is collected. Theatre names are sample listings; check local showtimes separately.</p></aside></section>
+<section id="history" class="section"><div class="section-head"><div><p class="eyebrow">RESERVATIONS</p><h2 id="historyTitle">My bookings</h2></div><button id="refreshBookings" class="button secondary">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Customer</th><th>Movie</th><th>Theatre</th><th>Show</th><th>Seat</th><th>Status</th><th>Action</th></tr></thead><tbody id="bookingRows"><tr><td colspan="7">Sign in to view your bookings.</td></tr></tbody></table></div></section>
+<section id="admin" class="section" hidden><p class="eyebrow">ADMIN DASHBOARD</p><h2>Manage movies</h2><p class="muted">Only accounts with the ADMIN role can add or remove movies.</p><form id="movieForm" class="admin-form panel"><label>Title<input id="newTitle" required></label><label>Genre<input id="newGenre" required></label><label>Duration (minutes)<input id="newDuration" type="number" min="1" value="120" required></label><label>Price (₹)<input id="newPrice" type="number" min="0" step="0.01" value="200" required></label><button class="button">Add movie</button><p id="adminMessage" class="message" role="status"></p></form><h3>Current movies</h3><div id="adminMovies" class="admin-movies"></div></section>
+</main><footer>Learning project · Java · Spring Boot · SQLite</footer><script src="app.js"></script></body></html>
